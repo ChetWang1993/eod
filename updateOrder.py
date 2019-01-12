@@ -11,8 +11,8 @@ if len(sys.argv) < 3:
 	print('usage: {} symbol strat [dt]'.format(sys.argv[0]))
 	quit()
 
-root_dir = '/Users/apple/Documents/trading/'
-#root_dir = '/root/'
+#root_dir = '/Users/apple/Documents/trading/'
+root_dir = '/root/'
 order_path = root_dir + 'eod/data/order/{}/{}.txt'
 eod_path = root_dir + 'eod/data/instrument/{}.txt'
 ts_format = '%Y-%m-%dT%H:%M:%S.%fZ'
