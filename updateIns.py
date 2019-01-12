@@ -20,7 +20,7 @@ setting = json.load(open(conf_path.format(strat)))
 if len(sys.argv) == 2:
 	dt = sys.argv[1]
 else:
-	dt = datetime.now().strftime('%y%m%d')
+	dt = datetime.now().strftime('%Y%m%d')
 
 okApi = okApi(setting['apiKey'], setting['secretKey'],
 	setting['order_log_dir'].format(setting['symbol']) + setting['order_log_name'].format(datetime.now()))
