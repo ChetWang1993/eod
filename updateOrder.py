@@ -11,8 +11,8 @@ if len(sys.argv) < 3:
 	print('usage: {} symbol strat [dt]'.format(sys.argv[0]))
 	quit()
 
-#root_dir = '/Users/apple/Documents/trading/'
-root_dir = '/root/'
+root_dir = '/Users/apple/Documents/trading/'
+#root_dir = '/root/'
 order_path = root_dir + 'eod/data/order/{}/{}.txt'
 eod_path = root_dir + 'eod/data/instrument/{}.txt'
 ts_format = '%Y-%m-%dT%H:%M:%S.%fZ'
@@ -24,7 +24,7 @@ if len(sys.argv) == 4:
 	dt = sys.argv[3]
 else:
 	dt = datetime.now().strftime('%Y%m%d')
-yd = (datetime.strptime(dt, '%Y%m%d') - timedelta(1)).replace(hour=0, minute=0, second=0, microsecond=0)
+nd = (datetime.strptime(dt, '%Y%m%d') + timedelta(1)).replace(hour=0, minute=0, second=0, microsecond=0)
 td = datetime.strptime(dt, '%Y%m%d').replace(hour=0, minute=0, second=0, microsecond=0)
 
 setting = json.load(open(conf_path.format(strat)))
@@ -44,12 +44,11 @@ try:
 		x['filled_qty'], x['fee'], x['order_id'], x['price'], x['price_avg'], x['status'], 
 		x['type'], x['contract_val'], x['leverage']])) 
 		for x in ret['order_info']]
-
-	orders = [x for x in orders if datetime.strptime(x['timestamp'], ts_format) <= td and
-		datetime.strptime(x['timestamp'], ts_format) >= yd]
+	orders = [x for x in orders if datetime.strptime(x['timestamp'], ts_format) <= nd and
+		datetime.strptime(x['timestamp'], ts_format) >= td]
 	orders_yd = pd.DataFrame(orders)
 
 	orders_yd.to_csv(order_path.format(strat, dt), index = False, sep = '\t')
+	print('[INFO]: generate order log for strat {} on {} successfully'.format(strat, dt))
 except Exception as e:
 	print('[ERROR]: fail to generate order log for strat {} on {} because {}'.format(strat, dt, e))
-print('[INFO]: generate order log for strat {} on {} successfully'.format(strat, dt))

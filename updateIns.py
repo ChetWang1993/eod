@@ -37,7 +37,6 @@ try:
 
 	f = open(ins_path.format(dt), 'w')
 	f.writelines([x + '\n' for x in ins_list.values()])
-
+	print('[INFO]: generate instrument log for strat {} on {} successfully'.format(strat, dt))
 except Exception as e:
 	print('[ERROR]: fail to generate instrument log for strat {} on {} because {}'.format(strat, dt, e))
-print('[INFO]: generate instrument log for strat {} on {} successfully'.format(strat, dt))
