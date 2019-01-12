@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
-# --*-- encoding: utf-8 --*--
+# encoding: UTF-8
 import time
-import datetime
+#import datetime
 from datetime import datetime
 #from func import *
 from binance.client import Client
@@ -48,7 +48,7 @@ for d in [sd + timedelta(x) for x in range(int((ed - sd).days))]:
         'Open': str(x[1]), 'Close': str(x[4]), 
         'TotalVolume': '{}.{}'.format(str(x[5]).split('.')[0], str(x[5]).split('.')[1])} for x in klines])
     #print(df)
-    
+
     if not os.path.exists(s_dir):
         os.makedirs(s_dir)
 
