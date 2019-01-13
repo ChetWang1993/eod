@@ -5,9 +5,7 @@ if len(sys.argv) < 2:
 	quit()
 
 strat = sys.argv[1]
-root_dir = '/Users/apple/Documents/trading/'
 conf_path = root_dir + 'trading/conf/OKEX_{}.json'
-#root_dir = '/root/'
 pnl_dir = root_dir + 'eod/data/pnl/{}/'.format(strat)
 ts_format = '%Y-%m-%dT%H:%M:%S.%fZ'
 

@@ -6,8 +6,6 @@ if len(sys.argv) < 2:
 	print('usage: {} strat [dt]'.format(sys.argv[0]))
 	quit()
 
-root_dir = '/Users/apple/Documents/trading/'
-#root_dir = '/root/'
 order_path = root_dir + 'eod/data/order/{}/{}.txt'
 ins_path = root_dir + 'eod/data/instrument/{}.txt'
 ts_format = '%Y-%m-%dT%H:%M:%S.%fZ'
@@ -43,7 +41,6 @@ try:
 	orders = [x for x in orders if datetime.strptime(x['timestamp'], ts_format) <= nd and
 		datetime.strptime(x['timestamp'], ts_format) >= td]
 
-	print(orders)
 	if len(orders):
 		orders_yd = orders_yd.append(orders)
 	orders_yd.to_csv(order_path.format(strat, dt), index = False, sep = '\t')

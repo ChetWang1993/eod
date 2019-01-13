@@ -2,8 +2,6 @@
 # encoding: UTF-8
 from constantsEOD import *
 
-root_dir = '/Users/apple/Documents/trading/'
-#root_dir = '/root/'
 strat = 'dy'
 ts_format = '%y%m%d'
 conf_path = root_dir + 'trading/conf/OKEX_{}.json'
