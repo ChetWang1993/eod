@@ -35,7 +35,7 @@ try:
 		(float(res1['equity']) + float(spot_res['balance'])) *float(res2['last']),
 		0]
 
-	pnl = pnl.append([dict(zip(pnl_ks, pnl_value))], sort = False)
+	pnl = pnl.append([dict(zip(pnl_ks, pnl_value))])
 	pnl.to_csv(pnl_path, index = False, sep = '\t')
 	print('[INFO]: generate pnl for strat {} on {} successfully'.format(strat, dt))
 except Exception as e:

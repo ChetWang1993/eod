@@ -5,7 +5,7 @@ if len(sys.argv) < 2:
 	quit()
 
 strat = sys.argv[1]
-pnl = pd.read_csv('../trading/log/pnl_dy.log', sep='\t')
+pnl = pd.read_csv('../trading/log/pnl_{}.log'.format(strat), sep='\t')
 pnl_dir = root_dir + 'eod/data/pnl/{}/'.format(strat)
 
 sd = datetime(year = 2018, month = 11, day = 11)
