@@ -1,15 +1,9 @@
 #!/usr/local/bin/python
 # encoding: UTF-8
+from constantsEOD import *
 
-import json
-import sys
-import pandas as pd
-sys.path.append('../trading')
-from func import *
-from datetime import datetime, date, time, timedelta
-
-#root_dir = '/Users/apple/Documents/trading/'
-root_dir = '/root/'
+root_dir = '/Users/apple/Documents/trading/'
+#root_dir = '/root/'
 strat = 'dy'
 ts_format = '%y%m%d'
 conf_path = root_dir + 'trading/conf/OKEX_{}.json'
@@ -22,8 +16,7 @@ if len(sys.argv) == 2:
 else:
 	dt = datetime.now().strftime('%Y%m%d')
 
-okApi = okApi(setting['apiKey'], setting['secretKey'],
-	setting['order_log_dir'].format(setting['symbol']) + setting['order_log_name'].format(datetime.now()))
+okApi = okApi(setting['apiKey'], setting['secretKey'], '')
 
 try:
 	ret = okApi.get_okex('/api/futures/v3/instruments')
